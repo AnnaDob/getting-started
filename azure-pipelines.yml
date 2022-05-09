@@ -32,3 +32,10 @@ stages:
         containerRegistry: 'devsuperappregistry'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure subscription 1(dd568595-5cd6-440e-bac6-3e52bc422ed6)'
+        appType: 'webAppLinux'
+        WebAppName: 'devSuperApp'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
