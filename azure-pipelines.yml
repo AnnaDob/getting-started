@@ -28,7 +28,8 @@ stages:
         tags: |
           $(tag)
    
-- stage: Add to container
+- stage: Add
+  displayName: Add to container
   jobs:
   - job: Add
     steps:
