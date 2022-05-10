@@ -27,15 +27,17 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+   
+- stage: Add to container
+  jobs:
+  - job: Add
+    steps:
     - task: Docker@2
+      displayName: Add to container
       inputs:
         containerRegistry: 'devsuperappregistry'
+        repository: 'container_for_image'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-    - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'Azure subscription 1(dd568595-5cd6-440e-bac6-3e52bc422ed6)'
-        appType: 'webAppLinux'
-        WebAppName: 'devSuperApp'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    
+    
