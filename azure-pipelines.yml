@@ -40,5 +40,10 @@ stages:
         repository: 'container_for_image'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-    
+    - task: AzureKeyVault@2
+      inputs:
+        azureSubscription: 'Key_vault'
+        KeyVaultName: 'devmainkeyvault'
+        SecretsFilter: '*'
+        RunAsPreJob: false
     
