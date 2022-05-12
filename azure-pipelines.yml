@@ -41,7 +41,7 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
 
-- stage: Container Deploy
+- stage: Deploy
   displayName: Container Deploy to Azure Web App
   jobs:
   - job: Deploy
