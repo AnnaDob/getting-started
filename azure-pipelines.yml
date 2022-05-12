@@ -40,4 +40,15 @@ stages:
         repository: 'container_for_image'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-    
+
+- stage: Container Deploy
+  displayName: Container Deploy to Azure Web App
+  jobs:
+  - job: Deploy
+    steps:
+    - task: AzureWebAppContainer@1
+      displayName: Azure Web App on Container Deploy
+      inputs:
+        appName: 'devSuperApp'
+        azureSubscription: 'dd568595-5cd6-440e-bac6-3e52bc422ed6'
+        imageName: 'devsuperappregistry .azurecr.io/container_for_image:latest'    
