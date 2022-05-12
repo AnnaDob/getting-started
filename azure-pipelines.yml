@@ -50,5 +50,5 @@ stages:
       displayName: Azure Web App on Container Deploy
       inputs:
         appName: 'devSuperApp'
-        azureSubscription: 'cf67d144-23c9-4748-91c2-f3b3d0c9d6e4'
+        azureSubscription: '0676b297-0bb7-4596-856b-6297ae465035'
         imageName: 'devsuperappregistry.azurecr.io/container_for_image:latest'    
