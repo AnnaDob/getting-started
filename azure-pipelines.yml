@@ -10,6 +10,8 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  imageName: 'devsuperappregistry.azurecr.io/container_for_image:$(Build.BuildId)'
+  azureSubscription: '0676b297-0bb7-4596-856b-6297ae465035'
 
 stages:
 - stage: Build
@@ -50,5 +52,5 @@ stages:
       displayName: Azure Web App on Container Deploy
       inputs:
         appName: 'devSuperApp'
-        azureSubscription: '0676b297-0bb7-4596-856b-6297ae465035'
-        imageName: 'devsuperappregistry.azurecr.io/container_for_image'
+        azureSubscription: $(azureSubscription)
+        imageName: $(imageName)
