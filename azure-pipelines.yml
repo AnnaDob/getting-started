@@ -48,9 +48,15 @@ stages:
   jobs:
   - job: Deploy
     steps:
+    - task: AzureKeyVault@2
+      inputs:
+        azureSubscription: 'Key_vault'
+        KeyVaultName: 'devmainkeyvault'
+        SecretsFilter: '*'
+        RunAsPreJob: true
     - task: AzureWebAppContainer@1
       displayName: Azure Web App on Container Deploy
       inputs:
-        appName: 'devSuperApp'
+        appName: $(app-service-name)
         azureSubscription: $(azureSubscription)
         imageName: $(imageName)
