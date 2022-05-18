@@ -30,7 +30,7 @@ stages:
 #         tags: |
 #           $(tag)
    
-- stage: Build and Push
+- stage: Build_and_Push
   displayName: Build and Push to container
   jobs:
   - job: Add
