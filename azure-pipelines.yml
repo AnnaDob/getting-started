@@ -30,13 +30,13 @@ stages:
 #         tags: |
 #           $(tag)
    
-- stage: Add
-  displayName: Add to container
+- stage: Build and Push
+  displayName: Build and Push to container
   jobs:
   - job: Add
     steps:
     - task: Docker@2
-      displayName: Add to container
+      displayName: Build and Push to container
       inputs:
         containerRegistry: 'devsuperappregistry'
         repository: 'container_for_image'
