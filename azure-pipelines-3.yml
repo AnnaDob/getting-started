@@ -42,8 +42,8 @@ stages:
         containerRegistry: 'devsuperappregistry'
         repository: 'container_for_image'
         command: push
-        tags:
-          $(tag)
+        # tags:
+        #   $(tag)
 
 - stage: Deploy
   displayName: Container Deploy to Azure Web App
