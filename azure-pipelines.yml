@@ -2,67 +2,6 @@
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-# trigger:
-# - master
-
-# resources:
-# - repo: self
-
-# variables:
-#   tag: '$(Build.BuildId)'
-#   imageName: 'devsuperappregistry.azurecr.io/container_for_image:$(Build.BuildId)'
-#   azureSubscription: '0676b297-0bb7-4596-856b-6297ae465035'
-
-# stages:
-# - stage: Build
-#   displayName: Build image
-#   jobs:
-#   - job: Build
-#     displayName: Build
-#     pool:
-#       vmImage: ubuntu-latest
-#     steps:
-#     - task: Docker@2
-#       displayName: Build an image
-#       inputs:
-#         command: build
-#         dockerfile: '**/Dockerfile'
-#         tags: |
-#           $(tag)
-
-# - stage: Push
-#   displayName: Push image
-#   jobs:
-#   - job: Push
-#     displayName: Push
-#     steps:
-#     - task: Docker@2
-#       displayName: Push image
-#       inputs:
-#         containerRegistry: 'devsuperappregistry'
-#         repository: 'container_for_image'
-#         command: push
-#         # tags:
-#         #   $(tag)
-
-# - stage: Deploy
-#   displayName: Container Deploy to Azure Web App
-#   jobs:
-#   - job: Deploy
-#     steps:
-#     - task: AzureKeyVault@2
-#       inputs:
-#         azureSubscription: 'Key_vault'
-#         KeyVaultName: 'devmainkeyvault'
-#         SecretsFilter: '*'
-#         RunAsPreJob: true
-#     - task: AzureWebAppContainer@1
-#       displayName: Azure Web App on Container Deploy
-#       inputs:
-#         appName: $(app-service-name)
-#         azureSubscription: $(azureSubscription)
-#         imageName: $(imageName)
-
 trigger:
 - master
 
@@ -75,22 +14,6 @@ variables:
   azureSubscription: '0676b297-0bb7-4596-856b-6297ae465035'
 
 stages:
-# - stage: Build
-#   displayName: Build image
-#   jobs:
-#   - job: Build
-#     displayName: Build
-#     pool:
-#       vmImage: ubuntu-latest
-#     steps:
-#     - task: Docker@2
-#       displayName: Build an image
-#       inputs:
-#         command: build
-#         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-#         tags: |
-#           $(tag)
-   
 - stage: Build_and_Push
   displayName: Build and Push to container
   jobs:
