@@ -11,7 +11,7 @@ resources:
 variables:
   tag: '$(Build.BuildId)'
   imageName: 'devsuperappregistry.azurecr.io/container_for_image:$(Build.BuildId)'
-  azureSubscription: '0676b297-0bb7-4596-856b-6297ae465035'
+  azureSubscription: '$(azureSubscription)'
 
 stages:
 - stage: Build_and_Push
